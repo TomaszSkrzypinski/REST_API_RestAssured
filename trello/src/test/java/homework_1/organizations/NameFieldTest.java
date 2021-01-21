@@ -2,7 +2,6 @@ package homework_1.organizations;
 
 import homework_1.base.BaseTest;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
@@ -10,12 +9,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class NameFieldTest extends BaseTest {
 
+    private String name;
+    protected static String secondOrganizationId;
+
     @Test
     public void createOrganizationWithCorrectName(){
 
         name = "_a1_a1_a1";
 
-        Response response = given()
+        JsonPath json = given()
                 .spec(reqSpec)
                 .queryParam("name", name)
                 .when()
@@ -23,21 +25,13 @@ public class NameFieldTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
-
-        JsonPath json = response.jsonPath();
+                .response()
+                .jsonPath();
 
         assertThat(json.getString("displayName")).isEqualTo(DISPLAY_NAME);
         assertThat(json.getString("name")).isEqualTo(name);
 
         id = json.getString("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + ORG + id)
-                .then()
-                .statusCode(200);
     }
 
     @Test
@@ -45,7 +39,7 @@ public class NameFieldTest extends BaseTest {
 
         name = "_a1_a1_a1";
 
-        Response response = given()
+        JsonPath json = given()
                 .spec(reqSpec)
                 .queryParam("name", name)
                 .when()
@@ -53,16 +47,15 @@ public class NameFieldTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
-
-        JsonPath json = response.jsonPath();
+                .response()
+                .jsonPath();
 
         assertThat(json.getString("displayName")).isEqualTo(DISPLAY_NAME);
         assertThat(json.getString("name")).isEqualTo(name);
 
         id = json.getString("id");
 
-        Response response2 = given()
+        JsonPath json2 = given()
                 .spec(reqSpec)
                 .queryParam("name", name)
                 .when()
@@ -70,11 +63,10 @@ public class NameFieldTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
+                .response()
+                .jsonPath();
 
-        JsonPath json2 = response2.jsonPath();
-
-        id2 = json2.getString("id");
+        secondOrganizationId = json2.getString("id");
 
         assertThat(json2.getString("displayName")).isEqualTo(DISPLAY_NAME);
         assertThat(json2.getString("name")).isEqualTo(name + "1");
@@ -82,14 +74,7 @@ public class NameFieldTest extends BaseTest {
         given()
                 .spec(reqSpec)
                 .when()
-                .delete(BASE_URL + ORG + id)
-                .then()
-                .statusCode(200);
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + ORG + id2)
+                .delete(BASE_URL + ORG + secondOrganizationId)
                 .then()
                 .statusCode(200);
     }
@@ -99,7 +84,7 @@ public class NameFieldTest extends BaseTest {
 
         name = "ab";
 
-        Response response = given()
+        JsonPath json = given()
                 .spec(reqSpec)
                 .queryParam("name", name)
                 .when()
@@ -107,21 +92,13 @@ public class NameFieldTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
-
-        JsonPath json = response.jsonPath();
+                .response()
+                .jsonPath();
 
         assertThat(json.getString("displayName")).isEqualTo(DISPLAY_NAME);
         assertThat(json.getString("name")).isNotEqualTo(name);
 
         id = json.getString("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + ORG + id)
-                .then()
-                .statusCode(200);
     }
 
     @Test
@@ -129,7 +106,7 @@ public class NameFieldTest extends BaseTest {
 
         name = "a1_a1_a1_Ba?a/a-a";
 
-        Response response = given()
+        JsonPath json = given()
                 .spec(reqSpec)
                 .queryParam("name", name)
                 .when()
@@ -137,21 +114,12 @@ public class NameFieldTest extends BaseTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .response();
-
-        JsonPath json = response.jsonPath();
+                .response()
+                .jsonPath();
 
         assertThat(json.getString("displayName")).isEqualTo(DISPLAY_NAME);
         assertThat(json.getString("name")).isEqualTo("a1_a1_a1_baaaa");
 
         id = json.getString("id");
-
-        given()
-                .spec(reqSpec)
-                .when()
-                .delete(BASE_URL + ORG + id)
-                .then()
-                .statusCode(200);
     }
-
 }
