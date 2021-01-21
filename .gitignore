@@ -1,0 +1,7 @@
+#Allure
+
+.allure/*
+allure-results/*
+
+#Target
+target/*

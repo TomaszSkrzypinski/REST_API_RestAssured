@@ -22,5 +22,4 @@ public class BaseTest {
 
         reqSpec = reqBuilder.build();
     }
-
 }

@@ -1,5 +1,6 @@
 package base;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
@@ -24,6 +25,7 @@ public class BaseTest{
         reqBuilder.addQueryParam("key", KEY);
         reqBuilder.addQueryParam("token", TOKEN);
         reqBuilder.setContentType(ContentType.JSON);
+        reqBuilder.addFilter(new AllureRestAssured());
 
         reqSpec = reqBuilder.build();
     }
