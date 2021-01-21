@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.jsonplaceholder.user.post.PostTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.759 sec - in com.jsonplaceholder.user.post.PostTest

@@ -1,0 +1,6 @@
+com\jsonplaceholder\base\BaseTest.class
+com\jsonplaceholder\user\post\PostTest.class
+com\jsonplaceholder\user\patch\PatchTest.class
+com\jsonplaceholder\user\put\PutTest.class
+com\jsonplaceholder\user\delete\DeleteTest.class
+com\jsonplaceholder\user\get\GetTest.class

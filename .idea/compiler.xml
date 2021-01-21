@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="trello" />
+        <module name="jsonplaceholder Allure" />
         <module name="jsonplaceholder" />
         <module name="serializacja" />
         <module name="parametry" />

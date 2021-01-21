@@ -1,0 +1,5 @@
+com\jsonplaceholder\model\User.class
+com\jsonplaceholder\model\Geo.class
+com\jsonplaceholder\model\Address.class
+com\jsonplaceholder\model\Company.class
+com\jsonplaceholder\model\Comment.class
