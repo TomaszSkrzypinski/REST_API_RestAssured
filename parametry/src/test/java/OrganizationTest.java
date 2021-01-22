@@ -32,7 +32,7 @@ public class OrganizationTest extends BaseTest{
                 Arguments.of("www://wp.pl"));
     }
 
-    @DisplayName("Create organization with walid data")
+    @DisplayName("Create organization with valid data")
     @ParameterizedTest(name = "desc: {0}, website: {1}, name: {2},}")
     @MethodSource("createOrganizationData")
     public void createNewOrganization(String description, String website, String name) {
@@ -49,7 +49,7 @@ public class OrganizationTest extends BaseTest{
                 .queryParam("desc", organization.getDesc())
                 .queryParam("website", organization.getWebsite())
                 .when()
-                .post("https://api.trello.com/1/organizations/")
+                .post(BASE_URL + ORGANIZATIONS)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -75,7 +75,7 @@ public class OrganizationTest extends BaseTest{
                 .spec(reqSpec)
                 .queryParam("name", organization.getName())
                 .when()
-                .post("https://api.trello.com/1/organizations/")
+                .post(BASE_URL + ORGANIZATIONS)
                 .then()
                 .statusCode(200)
                 .extract()
@@ -88,7 +88,7 @@ public class OrganizationTest extends BaseTest{
         Assertions.assertThat(json.getString("name")).isEqualTo(answer);
     }
 
-    @DisplayName("Testing organizatoin WWW")
+    @DisplayName("Testing organization WWW")
     @ParameterizedTest(name = "website: {0}")
     @MethodSource("createWebsiteData")
     public void testsOrganizationWWW(String website) {
@@ -101,7 +101,7 @@ public class OrganizationTest extends BaseTest{
                 .spec(reqSpec)
                 .queryParam("website", organization.getWebsite())
                 .when()
-                .post("https://api.trello.com/1/organizations/")
+                .post(BASE_URL + ORGANIZATIONS)
                 .then()
                 .statusCode(200)
                 .extract()

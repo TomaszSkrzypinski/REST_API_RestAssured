@@ -28,7 +28,7 @@
         <org.json>20180813</org.json>
         <com.github.javafaker>1.0.0</com.github.javafaker>
         <allure-junit5>2.11.0</allure-junit5>
-        <allure-rest-assured>2.11.0</allure-rest-assured>
+        <allure-rest-assured>2.12.1</allure-rest-assured>
         <allure-maven>2.9</allure-maven>
         <maven-surefire-plugin>2.19.1</maven-surefire-plugin>
         <junit-platform-surefire-provider>1.1.0</junit-platform-surefire-provider>

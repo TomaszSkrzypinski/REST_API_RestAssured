@@ -9,12 +9,15 @@ import static io.restassured.RestAssured.given;
 
 public class BaseTest {
 
-    protected static final String KEY = "409e77b1570a2510addbb32e2b397b1b";
-    protected static final String TOKEN = "8402236107a065c9464cd5b1484f71cac919a1e4334e3422b0a6f2372582c87d";
-    //W tych testach nie sprawdzam displayName, użycie go tutaj jest ok?
-    protected static final String DISPLAY_NAME = "My organization name";
+    private static final String KEY = "409e77b1570a2510addbb32e2b397b1b";
+    private static final String TOKEN = "8402236107a065c9464cd5b1484f71cac919a1e4334e3422b0a6f2372582c87d";
+    private static final String DISPLAY_NAME = "My organization name";
 
-    protected static RequestSpecBuilder reqBuilder;
+    protected static final String BASE_URL = "https://api.trello.com/1";
+    protected static final String ORGANIZATIONS = "/organizations/";
+
+
+    private static RequestSpecBuilder reqBuilder;
     protected static RequestSpecification reqSpec;
 
     protected String id;
