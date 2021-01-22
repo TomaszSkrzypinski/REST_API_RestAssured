@@ -1,7 +1,10 @@
 #Allure
 
-.allure/*
-allure-results/*
+/.allure/*
+/allure-results/*
 
 #Target
 target/*
+
+ #INTELIJ
+.idea
